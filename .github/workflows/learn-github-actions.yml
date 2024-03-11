@@ -1,0 +1,27 @@
+# Define workflow name (Optional)
+# Define when the workflow should be triggered
+# Define the jobs that the workflow should perform
+# Define the steps that the jobs should perform
+
+# For the jobs
+# Define the job name
+# Define where the jobs should run
+# Define the steps that the jobs should perform
+
+# For the steps
+# Checkout the repository (Download source code into the runner)
+# Setup Node.js environment
+
+name: learn-github-actions
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      with:
+        node-version: '14'
+      - run: npm install -g bats
+      - run: bats --version
+
